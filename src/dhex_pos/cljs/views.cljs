@@ -22,7 +22,7 @@
        "go to About Page"]]
 
      [:> Button {:variant "outline"
-                 :className "!bg-red-300"} "This is a test button"]
+                 :className "bg-red-300!"} "This is a test button"]
      ]))
 
 (defmethod routes/panels :home-panel [] [home-panel])

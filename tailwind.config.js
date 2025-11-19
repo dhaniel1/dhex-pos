@@ -1,11 +1,7 @@
-const { globSync } = require("fast-glob");
-
 module.exports = {
   content: [
     "./src/dhex_pos/cljs/**/*.cljs",
     "./src-js/**/*.{ts,tsx}",
- // "./resources/public/js/compiled/**/*.js",
- // "./resources/public/index.html",
   ],
   theme: {
     extend: {
@@ -68,5 +64,4 @@ module.exports = {
       },
     },
   },
-  plugins: [],
 }
