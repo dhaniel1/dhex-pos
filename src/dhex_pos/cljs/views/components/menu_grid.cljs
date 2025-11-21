@@ -21,7 +21,7 @@
      (for [category  menu-categories]
        ^{:key category} [:> Button {:class "whitespace-nowrap"
                                     :on-click #(set-active-category category)
-                                    :variant (when (= active-category category) "outline")} 
+                                    :variant (if (= active-category category) "default" "outline")} 
                          (-> category
                              name
                              string/capitalize)])]))
@@ -63,8 +63,8 @@
        "Add to Cart"]]]))
 
 (defn menu-items []
-  (let [active-menu-items @(rf/subscribe [::subs/active-menu-items])]
-    (fn []
+  (fn []
+    (let [active-menu-items @(rf/subscribe [::subs/active-menu-items])]
       (if (empty? active-menu-items)
         [:div {:class "col-span-full text-center py-12 text-muted-foreground"}
          "No items available at the moment."]
