@@ -8,10 +8,10 @@
     "babel:watch": "babel src-js --out-dir src-js-dist --watch --extensions \".tsx,.ts,.js,.jsx\"",
     "tailwind:watch": "npx tailwindcss -i ./resources/public/css/globals.css -o ./resources/public/css/main.css --watch",
     "tailwind:build": "npx tailwindcss -i ./resources/public/css/globals.css -o ./resources/public/css/main.css --minify",
-    "deps:watch": "concurrently \"npm run babel:watch\" \"npm run tailwind:watch\"",
-    "dev": "concurrently \"npm run deps:watch\" \"npx shadow-cljs watch app\""
+    "dev": "concurrently \"npm run babel:watch\" \"npm run tailwind:watch\""
   },
   "dependencies": {
+    "@radix-ui/react-scroll-area": "^1.2.10",
     "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
