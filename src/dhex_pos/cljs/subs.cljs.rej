@@ -1,0 +1,10 @@
+diff a/src/dhex_pos/cljs/subs.cljs b/src/dhex_pos/cljs/subs.cljs	(rejected hunks)
+@@ -133,6 +133,8 @@
+  :<- [::sorted-menu]
+ 
+  (fn [[active-category grouped-menu sorted-menu] _]
++   (println active-category)
++      (println grouped-menu)
+    (if (= active-category :all)
+      sorted-menu
+      (get grouped-menu active-category))))

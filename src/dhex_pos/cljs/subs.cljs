@@ -1,6 +1,5 @@
 (ns dhex-pos.cljs.subs
   (:require
-   [clojure.string :as string]
    [re-frame.core :as rf]))
 
 (defn map->vec
@@ -14,6 +13,58 @@
    (:name db)))
 
 (rf/reg-sub
+ ::show-reciept?
+ (fn [db]
+   (-> db :app :show-reciept?)))
+
+(rf/reg-sub
+ ::company-info
+
+ (fn [db]
+   (-> db  :app :company-info)))
+
+(rf/reg-sub
+ ::office-phone
+
+ :<- [::company-info]
+
+ (fn [company-info]
+   (:office-phone company-info)))
+
+(rf/reg-sub
+ ::company-name
+
+ :<- [::company-info]
+
+ (fn [company-info]
+   (:company-name company-info)))
+
+(rf/reg-sub
+ ::company-street
+
+ :<- [::company-info]
+
+ (fn [company-info]
+   (:company-name company-info)))
+
+
+(rf/reg-sub
+ ::company-state
+
+ :<- [::company-info]
+
+ (fn [company-info]
+   (:company-state company-info)))
+
+(rf/reg-sub
+ ::company-country
+
+ :<- [::company-info]
+
+ (fn [company-info]
+   (:company-country company-info)))
+
+(rf/reg-sub
  ::tax-rate 
  (fn [db]
    (-> db :app :tax-rate)))
@@ -22,7 +73,6 @@
  ::active-category
  (fn [db]
    (-> db :app :active-category)))
-
 
 (rf/reg-sub
  ::active-panel
@@ -136,6 +186,7 @@
    (if (= active-category :all)
      sorted-menu
      (get grouped-menu active-category))))
+
 
 
 

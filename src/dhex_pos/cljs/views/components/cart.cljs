@@ -7,6 +7,7 @@
 
             [dhex-pos.cljs.subs :as subs]
             [dhex-pos.cljs.events :as events]
+            [dhex-pos.cljs.views.components.reciept :as reciept]
             [dhex-pos.cljs.helpers.index :refer [format-currency]]
             ))
 
@@ -74,9 +75,9 @@
         cart-tax-value @(rf/subscribe [::subs/cart-tax-value])
         cart-sub-total @(rf/subscribe [::subs/cart-sub-total])
         cart-total @(rf/subscribe [::subs/cart-total])
-        complete-order #(js/console.log "Completing order")]
+        toggle-reciept  #(rf/dispatch [::events/toggle-receipt %])]
 
-    [:div {:class "border-t border-border p-6 space-y-4"}
+    [:div {:class "border-t border-border w-full p-6 space-y-4"}
      [:div {:class "space-y-2"}
       [:div {:class "flex justify-between text-sm"}
        [:span {:class "text-muted-foreground"} "Subtotal"]
@@ -91,14 +92,13 @@
       [:div {:class "flex justify-between"}
        [:span {:class "font-semibold  text-foreground"} "Total"]
        [:span {:class "text-2xl font-bold text-primary"}  (format-currency cart-total)]]
-
       ]
-
-     [:> Button {:size "lg"
-      :class "w-full h-12 text-base"
-      :on-click #(complete-order)}
-
-      "Complete Order"]]))
+    
+     [reciept/reciept-dialog 
+      [:> Button {:size "lg"
+                  :class "w-full h-12 text-base"
+                  :on-click #(toggle-reciept true)}
+       "Complete Order"]]]))
 
 (defn cart-items-view
   []

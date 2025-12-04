@@ -3,7 +3,11 @@
 (def app-db
   {:app {:tax-rate 8
          :active-category :all
-         :company-info {:name "dhex-pos"
+         :show-reciept? false
+         :company-info {:company-name "FastBite"
+                        :street "123 Main Street"
+                        :country "USA"
+                        :state "New york"
                         :office-phone "555-555-555"}
 
          :inventory {1 {:id 1

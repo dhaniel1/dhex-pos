@@ -7,22 +7,25 @@
             [dhex-pos.cljs.views.components.header :as header]
             [dhex-pos.cljs.views.components.cart :as cart-view]
             [dhex-pos.cljs.views.components.menu-grid :as menu]
+            [dhex-pos.cljs.views.components.reciept :as reciept]
             ))
 
 ;; home
 
-(defn home-panel []
-  [:div {:class "min-h-screen bg-background flex flex-col"}
+(defn home-panel
+  []
+  [:div {:class "min-h-screen bg-background overflow-hidden max-h-screen flex flex-col"}
    [header/header]
    
    [:div {:class "flex-1 flex overflow-hidden"}
     [:div {:class "flex-1 overflow-auto p-4 md:p-6"}
      
-     [:div {:class "h-full" } 
+     [:div {:class "h-full"} 
       [menu/menu]]]
 
     [:div {:class "hidden lg:block w-[400px] border-l border-border"}
-     [cart-view/cart]]]])
+     [cart-view/cart]]]]
+  )
 
 (defmethod routes/panels :home-panel [] [home-panel])
 ;; main

@@ -50,3 +50,10 @@
  ::set-active-category
  (fn-traced [db [_ category]]
             (assoc-in db [:app :active-category] category)))
+
+(rf/reg-event-db
+ ::toggle-receipt
+ (fn-traced [db [_ state]]
+            (assoc-in db [:app :show-reciept?] state)))
+ 
+
